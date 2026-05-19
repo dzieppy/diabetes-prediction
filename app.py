@@ -196,16 +196,22 @@ with st.sidebar:
     # Jika tombol diklik, tampilkan card About Us di halaman utama
     if about_us:
         st.markdown("""
+        <div class="hero">
+            <h1>👩‍💻 About Us</h1>
+            <p>Tim pengembang aplikasi Letsgo Check Diabetes.</p>
+        </div>
+        """, unsafe_allow_html=True)
+            
+        st.markdown("""
         <div class="card">
-            <h3>👩‍💻 About Us</h3>
-    
+            <h3>💡 Tentang Proyek</h3>
             <p>
-            Website <b>Letsgo Check Diabetes</b> dikembangkan sebagai tugas proyek
-            Machine Learning pada mata kuliah Praktisi Mengajar bersama Pak Sopian.
+            <b>Letsgo Check Diabetes</b> merupakan website berbasis Machine Learning
+            yang dikembangkan sebagai tugas proyek Praktisi Mengajar bersama Pak Sopian.
             Website ini digunakan untuk memprediksi risiko diabetes secara interaktif.
             </p>
     
-            <h4>👥 Tim Pengembang</h4>
+            <h3>👥 Tim Pengembang</h3>
             <p>
             - Diva Rizkiya Annisa<br>
             - Dimas Agatra<br>
