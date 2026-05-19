@@ -375,26 +375,34 @@ elif menu == "📘 Guide":
     </div>
     """, unsafe_allow_html=True)
 
-    st.markdown("""
-    <div class="card">
-        <h3>🧭 Cara Menggunakan Aplikasi</h3>
-        <ol>
-            <li>Buka menu <b>Prediction</b>.</li>
-            <li>Masukkan nilai pada setiap variabel kesehatan pasien.</li>
-            <li>Klik tombol <b>Prediksi Sekarang</b>.</li>
-            <li>Hasil prediksi akan muncul di sebelah kanan.</li>
-            <li>Baca interpretasi hasil dan catatan yang diberikan.</li>
-            <li>Untuk memeriksa nilai BMI, Buka Menu BMI.</li>
-        </ol>
-    """)
-        st.markdown("### ⚠️ Catatan Penting")
-        st.markdown("""
-                Aplikasi ini tidak digunakan untuk menggantikan diagnosis dokter.
-                Hasil prediksi hanya bersifat edukatif dan sebagai contoh penerapan
-                Machine Learning dalam bidang kesehatan.
-                """)
-        st.markdown('</div>', unsafe_allow_html=True)
+    # Membuka card
+    st.markdown('<div class="card">', unsafe_allow_html=True)
 
+    # Judul
+    st.markdown("### 🧭 Cara Menggunakan Aplikasi")
+
+    # Langkah-langkah
+    st.markdown("""
+    1. Buka menu **Prediction**.
+    2. Masukkan nilai pada setiap variabel kesehatan pasien.
+    3. Klik tombol **Prediksi Sekarang**.
+    4. Hasil prediksi akan muncul di sebelah kanan.
+    5. Baca interpretasi hasil dan catatan yang diberikan.
+    6. Untuk memeriksa nilai BMI, buka menu **BMI Calculator**.
+    """)
+
+    # Catatan penting
+    st.markdown("### ⚠️ Catatan Penting")
+
+    st.markdown("""
+    Aplikasi ini tidak digunakan untuk menggantikan diagnosis dokter.
+
+    Hasil prediksi hanya bersifat edukatif dan sebagai contoh penerapan
+    Machine Learning dalam bidang kesehatan.
+    """)
+
+    # Menutup card
+    st.markdown('</div>', unsafe_allow_html=True)
 elif menu == "🧮 BMI Calculator":
 
     # Hero Section
