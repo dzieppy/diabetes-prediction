@@ -190,7 +190,7 @@ with st.sidebar:
     )
     st.markdown("<br>", unsafe_allow_html=True)
 
-        if st.button("👥 About Us", use_container_width=True):
+    if st.button("👥 About Us", use_container_width=True):
             st.markdown("""
             <div style="
                 background: rgba(255,255,255,0.75);
