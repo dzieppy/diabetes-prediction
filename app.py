@@ -191,54 +191,52 @@ with st.sidebar:
     st.markdown("<br>", unsafe_allow_html=True)
     # Tombol About Us di sidebar
     about_us = st.button("👥 About Us", use_container_width=True)
-    # Jika tombol diklik, tampilkan card About Us di halaman utama
+# Jika tombol diklik, tampilkan card About Us di halaman utama
 if about_us:
     st.markdown("""
     <div class="hero" style="text-align:center;">
-            <h1>👩‍💻 About Us</h1>
-            <p>Tim pengembang aplikasi Letsgo Check Diabetes.</p>
-     </div>
-     """, unsafe_allow_html=True)
-            
-    st.markdown("""
-    <div class="card">
-            <h3>💡 Tentang Proyek</h3>
-            <p>
-            <b>Letsgo Check Diabetes</b> merupakan website berbasis Machine Learning
-            yang dikembangkan sebagai tugas proyek Praktisi Mengajar bersama Pak Sopian.
-            Website ini digunakan untuk memprediksi risiko diabetes secara interaktif.
-            </p>
-    
-            <h3>👥 Tim Pengembang</h3>
-            <p>
-            - Diva Rizkiya Annisa<br>
-            - Dimas Agatra<br>
-            - Salsabila<br>
-            - Hezron Tangdigau<br>
-            - M. Asrin<br>
-            - M. Satria<br>
-            - Yusihani Widasari<br>
-            - Yulikarniwati Lase<br>
-            - Yumna Zhafirah<br>
-            - Zahwa Putri Dio
-            </p>
-    
-            <p>
-            📊 Mahasiswa Statistika FMIPA Universitas Mulawarman
-            </p>
-    
-            <p>
-            💻 Developer &amp; UI Designer
-            </p>
-    
-            <p style="margin-bottom:0;">
-            🚀 Dibangun menggunakan <b>Python</b>, <b>Streamlit</b>,
-            <b>Scikit-Learn</b>, dan <b>Support Vector Machine (SVM)</b>.
-            </p>
+        <h1>👩‍💻 About Us</h1>
+        <p>Tim pengembang aplikasi Letsgo Check Diabetes.</p>
     </div>
     """, unsafe_allow_html=True)
-    
 
+    st.markdown('<div class="card">', unsafe_allow_html=True)
+
+    st.markdown("### 💡 Tentang Proyek")
+    st.write("""
+    **Letsgo Check Diabetes** merupakan website berbasis Machine Learning
+    yang dikembangkan sebagai tugas proyek Praktisi Mengajar bersama Pak Sopian.
+    Website ini digunakan untuk memprediksi risiko diabetes secara interaktif.
+    """)
+
+    st.markdown("### 👥 Tim Pengembang")
+    st.write("""
+    • Diva Rizkiya Annisa  
+    • Dimas Agatra  
+    • Salsabila  
+    • Hezron Tangdigau  
+    • M. Asrin  
+    • M. Satria  
+    • Yusihani Widasari  
+    • Yulikarniwati Lase  
+    • Yumna Zhafirah  
+    • Zahwa Putri Dio
+    """)
+
+    st.write("📊 Mahasiswa Statistika FMIPA Universitas Mulawarman")
+
+    st.markdown("### 🛠️ Teknologi yang Digunakan")
+    st.write("""
+    Python, Streamlit, Scikit-Learn, dan Support Vector Machine (SVM).
+    """)
+
+    st.markdown("### 🎯 Tujuan")
+    st.write("""
+    Mengembangkan aplikasi prediksi diabetes yang interaktif,
+    informatif, dan mudah digunakan oleh masyarakat umum.
+    """)
+
+    st.markdown('</div>', unsafe_allow_html=True)
 
 elif menu == "🏠 Home":
     st.markdown("""
