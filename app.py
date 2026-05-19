@@ -392,17 +392,25 @@ elif menu == "📘 Guide":
     """)
 
     # Catatan penting
-    st.markdown("### ⚠️ Catatan Penting")
-
     st.markdown("""
-    Aplikasi ini tidak digunakan untuk menggantikan diagnosis dokter.
-
-    Hasil prediksi hanya bersifat edukatif dan sebagai contoh penerapan
-    Machine Learning dalam bidang kesehatan.
-    """)
-
-    # Menutup card
-    st.markdown('</div>', unsafe_allow_html=True)
+    <div class="custom-card"
+         style="
+            background: linear-gradient(135deg, #fff7ed, #fffbeb);
+            border-left: 6px solid #f59e0b;
+            padding: 25px;
+            border-radius: 20px;
+            margin-top: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+         ">
+        <h3 style="margin-top:0; color:#92400e;">⚠️ Catatan Penting</h3>
+        <p style="font-size:16px; line-height:1.8; color:#78350f;">
+            Aplikasi ini tidak digunakan untuk menggantikan diagnosis dokter.
+            Hasil prediksi hanya bersifat edukatif dan sebagai contoh penerapan
+            <b>Machine Learning</b> dalam bidang kesehatan.
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
+    
 elif menu == "🧮 BMI Calculator":
 
     # Hero Section
