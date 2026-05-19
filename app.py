@@ -240,6 +240,10 @@ elif menu == "🩺 Prediction":
         st.markdown('<div class="card">', unsafe_allow_html=True)
         st.subheader("📋 Masukkan Data Pasien")
 
+        st.info(
+            "💡 Jika Anda tidak mengetahui beberapa nilai, biarkan kosong. "
+            "Sistem akan menggunakan nilai rata-rata dataset secara otomatis.")
+
         pregnancies = st.number_input("Jumlah Kehamilan", min_value=0, max_value=20, value=None, placeholder="Masukkan Jumlah Kehamilan")
         glucose = st.number_input("Glucose / Kadar Glukosa", min_value=0, max_value=300, value=None, placeholder="Masukkan Kadar Glukosa")
         blood_pressure = st.number_input("Blood Pressure / Tekanan Darah", min_value=0, max_value=200, value=None, placeholder="Masukkan Tekanan Darah")
@@ -263,6 +267,13 @@ elif menu == "🩺 Prediction":
             ]:
                 st.warning("⚠️ Mohon isi seluruh data pasien terlebih dahulu.")
             else:
+                # Mengganti nilai kosong dengan rata-rata dataset
+                pregnancies = pregnancies if pregnancies is not None else 3.8
+                glucose = glucose if glucose is not None else 121.7
+                skin_thickness = skin_thickness if skin_thickness is not None else 29.1
+                insulin = insulin if insulin is not None else 155.5
+                pedigree = pedigree if pedigree is not None else 0.47
+
                 data_baru = np.array([[pregnancies, glucose, blood_pressure, skin_thickness,
                                        insulin, bmi, pedigree, age]])
     
