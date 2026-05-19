@@ -396,44 +396,75 @@ elif menu == "📘 Guide":
         st.markdown('</div>', unsafe_allow_html=True)
 
 elif menu == "🧮 BMI Calculator":
-    st.markdown("""
-        <div class="custom-card">
-            <h1> BMI Calculator</h1>
-            <p class="center-text">
-            <p> Hitung BMI (Body Mass Index) dan ketahui kategori berat badan Anda.</p>
-        </div>
-    """, unsafe_allow_html=True)
 
-    col1, col2 = st.columns(2)
-    with col1:
-        tinggi = st.number_input(
-            "Tinggi Badan (cm)",
-            min_value=1.0
-        )
-    with col2:
-        berat = st.number_input(
-            "Berat Badan (kg)",
-            min_value=1.0
-        )
-    bmi_result = berat / ((tinggi / 100) ** 2)
-    st.metric(
-        "Hasil BMI",
-        f"{bmi_result:.2f}"
+    # Hero Section
+    st.markdown(
+        '<div class="hero">'
+        '<h1>🧮 BMI Calculator</h1>'
+        '<p>Hitung Body Mass Index (BMI) dan ketahui kategori berat badan Anda.</p>'
+        '</div>',
+        unsafe_allow_html=True
     )
-    if bmi_result < 18.5:
-        st.warning("Kategori: Berat badan kurang")
-    elif bmi_result < 25:
-        st.success("Kategori: Berat badan normal")
-    elif bmi_result < 30:
-        st.warning("Kategori: Kelebihan berat badan")
-    else:
-        st.error("Kategori: Obesitas")
 
-    st.markdown('<div class="custom-card">', unsafe_allow_html=True)
-    st.markdown("### 📊 Interpretasi BMI")
-    st.write("Kurang dari 18.5  →  Berat badan kurang")    
-    st.write("18.5 sampai 24.9  →  Berat badan normal")
-    st.write("25.0 sampai 29.9  →  Kelebihan berat badan")
-    st.write("30.0 atau lebih  →  Obesitas")
+    # Input
+    berat = st.number_input(
+        "⚖️ Berat Badan (kg)",
+        min_value=1.0,
+        max_value=300.0,
+        value=50.0
+    )
 
-    st.markdown('</div>', unsafe_allow_html=True)
+    tinggi = st.number_input(
+        "📏 Tinggi Badan (cm)",
+        min_value=50.0,
+        max_value=250.0,
+        value=160.0
+    )
+
+    # Tombol Hitung
+    if st.button("🧮 Hitung BMI"):
+
+        tinggi_m = tinggi / 100
+        bmi = berat / (tinggi_m ** 2)
+
+        # Menentukan kategori
+        if bmi < 18.5:
+            kategori = "Berat badan kurang"
+        elif bmi < 25:
+            kategori = "Berat badan normal"
+        elif bmi < 30:
+            kategori = "Kelebihan berat badan"
+        else:
+            kategori = "Obesitas"
+
+        # Hasil BMI
+        st.markdown(
+            '<div class="custom-card">',
+            unsafe_allow_html=True
+        )
+
+        st.subheader("📊 Hasil Perhitungan BMI")
+        st.write(f"**Nilai BMI:** {bmi:.2f}")
+        st.write(f"**Kategori:** {kategori}")
+
+        st.markdown(
+            '</div>',
+            unsafe_allow_html=True
+        )
+
+        # Interpretasi BMI
+        st.markdown(
+            '<div class="custom-card">',
+            unsafe_allow_html=True
+        )
+
+        st.subheader("📘 Interpretasi BMI")
+        st.write("Kurang dari 18.5 → Berat badan kurang")
+        st.write("18.5 sampai 24.9 → Berat badan normal")
+        st.write("25.0 sampai 29.9 → Kelebihan berat badan")
+        st.write("30.0 atau lebih → Obesitas")
+
+        st.markdown(
+            '</div>',
+            unsafe_allow_html=True
+        )
