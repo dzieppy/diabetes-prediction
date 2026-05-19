@@ -405,36 +405,26 @@ elif menu == "🧮 BMI Calculator":
     """, unsafe_allow_html=True)
 
     col1, col2 = st.columns(2)
-
     with col1:
-
         tinggi = st.number_input(
             "Tinggi Badan (cm)",
             min_value=1.0
         )
     with col2:
-
         berat = st.number_input(
             "Berat Badan (kg)",
             min_value=1.0
         )
     bmi_result = berat / ((tinggi / 100) ** 2)
-
     st.metric(
         "Hasil BMI",
         f"{bmi_result:.2f}"
     )
-
     if bmi_result < 18.5:
-
         st.warning("Kategori: Berat badan kurang")
-
     elif bmi_result < 25:
-
         st.success("Kategori: Berat badan normal")
-
     elif bmi_result < 30:
-
         st.warning("Kategori: Kelebihan berat badan")
     else:
         st.error("Kategori: Obesitas")
@@ -444,10 +434,10 @@ elif menu == "🧮 BMI Calculator":
 
     <h3> Interpretasi BMI</h3>
     <ul>
-    <li><b>< 18.5</b> : Berat badan kurang</li>
-    <li><b>18.5 - 24.9</b> : Berat badan normal</li>
-    <li><b>25 - 29.9</b> : Kelebihan berat badan</li>
-    <li><b>>= 30</b> : Obesitas</li>
+        <li><b>&lt; 18.5</b> : Berat badan kurang</li>
+        <li><b>18.5 - 24.9</b> : Berat badan normal</li>
+        <li><b>25 - 29.9</b> : Kelebihan berat badan</li>
+        <li><b>&gr; 30</b> : Obesitas</li>
     </ul>
     </div>
     """, unsafe_allow_html=True)
