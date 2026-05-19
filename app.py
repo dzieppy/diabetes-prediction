@@ -10,8 +10,7 @@ st.set_page_config(
 
 model = joblib.load("model_svm.pkl")
 scaler = joblib.load("scaler.pkl")
-
-AKURASI = 74
+AKURASI = joblib.load("accuracy.pkl")
 
 st.markdown("""
 <style>
