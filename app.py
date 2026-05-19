@@ -188,7 +188,50 @@ with st.sidebar:
             "🩺 Prediction"
         ]
     )
+    st.markdown("<br>", unsafe_allow_html=True)
 
+        if st.button("👥 About Us", use_container_width=True):
+            st.markdown("""
+            <div style="
+                background: rgba(255,255,255,0.75);
+                padding: 18px;
+                border-radius: 18px;
+                margin-top: 10px;
+                box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+                font-size: 14px;
+                line-height: 1.7;
+            ">
+                <h4 style="margin-top:0; color:#1e3a8a;">👩‍💻 About Us</h4>
+    
+                <p>
+                Website <b>Letsgo Check Diabetes</b> dikembangkan sebagai tugas proyek
+                Machine Learning bersama pak Sopian. Website ini digunakan untuk
+                memprediksi risiko diabetes secara interaktif.
+                </p>
+    
+                <p>
+                Projek ini dikerjakan oleh:
+                👩‍🎓 <b
+                - Diva Rizkiya Annisa
+                - Dimas Agatra
+                - Salsabila
+                - Hezron Tangdigau
+                - M. Asrin
+                - M. Satria
+                - Yusihani Widasari
+                - Yulikarniwati Lase
+                - Yumna Zhafirah
+                - Zahwa Putri Dio 
+                </b><br>
+                📊 Mahasiswa Statistika FMIPA Universitas Mulawarman
+                </p>
+                💻 Developer & UI Designer
+                </p>
+    
+                <p style="margin-bottom:0;">
+                </p>
+            </div>
+            """, unsafe_allow_html=True)
 if menu == "🏠 Home":
     st.markdown("""
     <div class="hero">
