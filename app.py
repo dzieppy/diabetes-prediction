@@ -196,7 +196,7 @@ with st.sidebar:
     # Jika tombol diklik, tampilkan card About Us di halaman utama
     if about_us:
         st.markdown("""
-        <div class="hero">
+        <div class="hero" style="text-align:center;">
             <h1>👩‍💻 About Us</h1>
             <p>Tim pengembang aplikasi Letsgo Check Diabetes.</p>
         </div>
