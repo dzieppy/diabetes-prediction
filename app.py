@@ -429,16 +429,16 @@ elif menu == "🧮 BMI Calculator":
     else:
         st.error("Kategori: Obesitas")
 
-    st.markdown("""
-    <div class="custom-card">
+    st.markdown('<div class="custom-card">', unsafe_allow_html=True)
 
-    <h3> Interpretasi BMI</h3>
-    <ul>
-        <li><b>&lt; 18.5</b> : Berat badan kurang</li>
-        <li><b>18.5 - 24.9</b> : Berat badan normal</li>
-        <li><b>25 - 29.9</b> : Kelebihan berat badan</li>
-        <li><b>&gr; 30</b> : Obesitas</li>
-    </ul>
-    </div>
-    """, unsafe_allow_html=True)
+    st.markdown("### 📊 Interpretasi BMI")
+
+    st.markdown("""
+    - **Kurang dari 18.5** → Berat badan kurang
+    - **18.5 – 24.9** → Berat badan normal
+    - **25.0 – 29.9** → Kelebihan berat badan
+    - **30.0 atau lebih** → Obesitas
+    """)
+
+    st.markdown('</div>', unsafe_allow_html=True)
 
