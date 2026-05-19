@@ -195,7 +195,7 @@ elif menu == "🩺 Prediction":
         insulin = st.number_input("Insulin", min_value=0, max_value=900, value=None, placeholder="Masukkan Kadar Insulin")
         bmi = st.number_input("BMI", min_value=0.0, max_value=70.0, value=None,placeholder="Masukkan nilai BMI")
         pedigree = st.number_input("Diabetes Pedigree Function", min_value=0.0, max_value=3.0, value=None, placeholder="Masukkan Nilai Pedigree")
-        age = st.number_input("Age / Umur", min_value=1, max_value=120, value=25)
+        age = st.number_input("Age / Umur", min_value=1, max_value=120, value=None, placeholder="Masukkan Umur")
 
         tombol = st.button("🔍 Prediksi Sekarang")
         st.markdown('</div>', unsafe_allow_html=True)
