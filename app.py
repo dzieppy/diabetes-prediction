@@ -397,7 +397,7 @@ elif menu == "📘 Guide":
 
 elif menu == "🧮 BMI Calculator":
     st.markdown("""
-    <div class="custom-card">
+        <div class="custom-card">
 
     <h1>🧮 BMI Calculator</h1>
 
