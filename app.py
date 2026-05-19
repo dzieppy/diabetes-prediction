@@ -397,11 +397,11 @@ elif menu == "📘 Guide":
 
 elif menu == "🧮 BMI Calculator":
     st.markdown("""
-    <div class="custom-card">
-        <h1> BMI Calculator</h1>
-        <p class="center-text">
-        <p> Hitung BMI (Body Mass Index) dan ketahui kategori berat badan Anda.</p>
-    </div>
+        <div class="custom-card">
+            <h1> BMI Calculator</h1>
+            <p class="center-text">
+            <p> Hitung BMI (Body Mass Index) dan ketahui kategori berat badan Anda.</p>
+        </div>
     """, unsafe_allow_html=True)
 
     col1, col2 = st.columns(2)
