@@ -262,10 +262,9 @@ elif menu == "🩺 Prediction":
 
         if tombol:
             if None in [
-                pregnancies, glucose, blood_pressure, skin_thickness,
-                insulin, bmi, pedigree, age
+                blood_pressure, bmi, age
             ]:
-                st.warning("⚠️ Mohon isi seluruh data pasien terlebih dahulu.")
+                st.warning("⚠️ Mohon isi data pasien terlebih dahulu.")
             else:
                 # Mengganti nilai kosong dengan rata-rata dataset
                 pregnancies = pregnancies if pregnancies is not None else 3.8
