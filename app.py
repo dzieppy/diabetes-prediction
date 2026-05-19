@@ -391,8 +391,7 @@ elif menu == "📘 Guide":
         st.markdown("""
                 Aplikasi ini tidak digunakan untuk menggantikan diagnosis dokter.
                 Hasil prediksi hanya bersifat edukatif dan sebagai contoh penerapan
-                Machine Learning dalam bidang kesehatan.
-                """)
+                Machine Learning dalam bidang kesehatan.""")
         st.markdown('</div>', unsafe_allow_html=True)
 
 elif menu == "🧮 BMI Calculator":
