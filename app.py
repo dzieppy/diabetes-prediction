@@ -399,7 +399,7 @@ elif menu == "🧮 BMI Calculator":
     st.markdown("""
     <div class="custom-card">
 
-    <h1>📏 BMI Calculator</h1>
+    <h1>🧮 BMI Calculator</h1>
 
     <p class="center-text">
     Hitung BMI (Body Mass Index) Anda
