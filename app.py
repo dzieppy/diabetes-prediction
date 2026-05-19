@@ -245,37 +245,54 @@ elif menu == "📊 About Model":
     </div>
     """, unsafe_allow_html=True)
 
+    # Membuka card putih
+    st.markdown('<div class="card">', unsafe_allow_html=True)
+
+    # Dataset
+    st.markdown("### 📌 Dataset")
+    st.markdown("""
+Dataset yang digunakan adalah dataset diabetes yang berisi indikator kesehatan pasien.
+
+Variabel input terdiri dari:
+- Pregnancies
+- Glucose
+- Blood Pressure
+- Skin Thickness
+- Insulin
+- BMI
+- Diabetes Pedigree Function
+- Age
+""")
+
+    # Metode
+    st.markdown("### 🤖 Metode")
+    st.markdown("""
+Algoritma yang digunakan adalah **Support Vector Machine (SVM)**.
+
+Model ini bekerja dengan mencari batas pemisah terbaik antara kelas pasien
+yang berisiko diabetes dan tidak berisiko diabetes.
+""")
+
+    # Performa Model
+    st.markdown("### 📈 Performa Model")
     st.markdown(f"""
-    <div class="card">
-        <h3>📌 Dataset</h3>
-        <p>
-        Dataset yang digunakan adalah dataset diabetes yang berisi indikator kesehatan pasien.
-        Variabel input terdiri dari Pregnancies, Glucose, Blood Pressure, Skin Thickness,
-        Insulin, BMI, Diabetes Pedigree Function, dan Age.
-        </p>
+Berdasarkan pengujian pada data testing, model memperoleh akurasi sebesar
+**{AKURASI}%**.
 
-        <h3>🤖 Metode</h3>
-        <p>
-        Algoritma yang digunakan adalah <b>Support Vector Machine (SVM)</b>.
-        Model ini bekerja dengan mencari batas pemisah terbaik antara kelas pasien
-        yang berisiko diabetes dan tidak berisiko diabetes.
-        </p>
+Nilai ini menunjukkan bahwa model mampu mengklasifikasikan sebagian besar
+data uji dengan cukup baik.
+""")
 
-        <h3>📈 Performa Model</h3>
-        <p>
-        Berdasarkan pengujian pada data testing, model memperoleh akurasi sebesar
-        <b>{AKURASI}%</b>. Nilai ini menunjukkan bahwa model mampu mengklasifikasikan
-        sebagian besar data uji dengan cukup baik.
-        </p>
+    # Tujuan
+    st.markdown("### 🎯 Tujuan")
+    st.markdown("""
+Tujuan aplikasi ini adalah menampilkan hasil prediksi diabetes dalam bentuk
+website interaktif yang mudah digunakan dan mudah dipahami oleh pengguna.
+""")
 
-        <h3>🎯 Tujuan</h3>
-        <p>
-        Tujuan aplikasi ini adalah menampilkan hasil prediksi diabetes dalam bentuk
-        website interaktif yang mudah digunakan dan mudah dipahami oleh pengguna.
-        </p>
-    </div>
-    """, unsafe_allow_html=True)
-
+    # Menutup card putih
+    st.markdown('</div>', unsafe_allow_html=True)
+    
 elif menu == "📘 Guide":
     st.markdown("""
     <div class="hero">
