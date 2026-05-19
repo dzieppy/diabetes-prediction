@@ -434,10 +434,10 @@ elif menu == "🧮 BMI Calculator":
     st.markdown("### 📊 Interpretasi BMI")
 
     st.markdown("""
-    - **Kurang dari 18.5** → Berat badan kurang
-    - **18.5 – 24.9** → Berat badan normal
-    - **25.0 – 29.9** → Kelebihan berat badan
-    - **30.0 atau lebih** → Obesitas
+    - **Kurang dari 18.5** : Berat badan kurang
+    - **18.5 – 24.9** : Berat badan normal
+    - **25.0 – 29.9** : Kelebihan berat badan
+    - **30.0 atau lebih** : Obesitas
     """)
 
     st.markdown('</div>', unsafe_allow_html=True)
