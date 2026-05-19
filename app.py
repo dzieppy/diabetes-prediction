@@ -3,183 +3,206 @@ import joblib
 import numpy as np
 
 st.set_page_config(
-    page_title="Diabetes Prediction System",
+    page_title="DiaPredict AI",
     page_icon="🩺",
     layout="wide"
 )
 
-# LOAD MODEL
 model = joblib.load("model_svm.pkl")
 scaler = joblib.load("scaler.pkl")
 
-# AKURASI MODEL KAMU
-akurasi_model = 74
+AKURASI = 74
 
-# CSS
 st.markdown("""
 <style>
 .stApp {
-    background: linear-gradient(135deg, #eef4ff, #f8fbff);
+    background: linear-gradient(135deg, #eff6ff 0%, #f8fafc 45%, #fdf2f8 100%);
 }
 
 .block-container {
-    padding-top: 2rem;
-    max-width: 1150px;
+    padding-top: 1.5rem;
+    max-width: 1180px;
 }
 
-.title {
-    font-size: 44px;
-    font-weight: 800;
-    color: #1e3a8a;
-    text-align: center;
+.hero {
+    padding: 45px;
+    border-radius: 32px;
+    background: linear-gradient(135deg, #1d4ed8, #7c3aed);
+    color: white;
+    box-shadow: 0 18px 45px rgba(30, 64, 175, 0.28);
+    margin-bottom: 25px;
 }
 
-.subtitle {
+.hero h1 {
+    font-size: 52px;
+    margin-bottom: 8px;
+}
+
+.hero p {
     font-size: 18px;
-    color: #64748b;
-    text-align: center;
-    margin-bottom: 30px;
+    opacity: 0.95;
 }
 
 .card {
-    background-color: white;
+    background: rgba(255,255,255,0.92);
     padding: 28px;
-    border-radius: 24px;
-    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+    border-radius: 26px;
+    box-shadow: 0 12px 35px rgba(15, 23, 42, 0.08);
     border: 1px solid #e2e8f0;
     margin-bottom: 20px;
 }
 
-.metric-card {
-    background: linear-gradient(135deg, #dbeafe, #eff6ff);
-    padding: 24px;
+.small-card {
+    background: white;
+    padding: 22px;
     border-radius: 22px;
     text-align: center;
-    border: 1px solid #bfdbfe;
+    box-shadow: 0 8px 28px rgba(15, 23, 42, 0.07);
+    border: 1px solid #e5e7eb;
 }
 
-.metric-number {
-    font-size: 38px;
-    font-weight: 800;
+.num {
+    font-size: 36px;
+    font-weight: 900;
     color: #1d4ed8;
 }
 
-.metric-label {
-    color: #475569;
+.label {
+    color: #64748b;
     font-size: 15px;
+}
+
+.badge {
+    display: inline-block;
+    padding: 9px 16px;
+    border-radius: 999px;
+    background: #dcfce7;
+    color: #166534;
+    font-weight: 800;
+    margin-bottom: 14px;
+}
+
+.warning-badge {
+    display: inline-block;
+    padding: 9px 16px;
+    border-radius: 999px;
+    background: #fee2e2;
+    color: #991b1b;
+    font-weight: 800;
+    margin-bottom: 14px;
 }
 
 div.stButton > button {
     width: 100%;
-    height: 50px;
-    border-radius: 15px;
-    background: linear-gradient(90deg, #2563eb, #1d4ed8);
+    height: 54px;
+    border-radius: 16px;
+    background: linear-gradient(90deg, #2563eb, #7c3aed);
     color: white;
-    font-weight: 700;
+    font-weight: 800;
     border: none;
+    font-size: 17px;
 }
 
-.result-positive {
-    background: #fee2e2;
-    color: #991b1b;
-    padding: 25px;
-    border-radius: 20px;
-    font-size: 24px;
-    font-weight: 800;
-    text-align: center;
+div.stButton > button:hover {
+    background: linear-gradient(90deg, #1d4ed8, #6d28d9);
+    color: white;
 }
 
-.result-negative {
-    background: #dcfce7;
+.result-good {
+    padding: 28px;
+    border-radius: 24px;
+    background: linear-gradient(135deg, #dcfce7, #f0fdf4);
     color: #166534;
-    padding: 25px;
-    border-radius: 20px;
-    font-size: 24px;
-    font-weight: 800;
+    font-size: 26px;
+    font-weight: 900;
     text-align: center;
+    border: 1px solid #86efac;
+}
+
+.result-bad {
+    padding: 28px;
+    border-radius: 24px;
+    background: linear-gradient(135deg, #fee2e2, #fff1f2);
+    color: #991b1b;
+    font-size: 26px;
+    font-weight: 900;
+    text-align: center;
+    border: 1px solid #fca5a5;
 }
 </style>
 """, unsafe_allow_html=True)
 
-# SIDEBAR
 menu = st.sidebar.radio(
-    "Navigasi",
-    ["🏠 Home", "🩺 Prediction", "📊 About Model"]
+    "🌐 Menu Navigasi",
+    ["🏠 Home", "🩺 Prediction", "📊 About Model", "📘 Guide"]
 )
 
-# ================= HOME =================
 if menu == "🏠 Home":
-    st.markdown('<div class="title">🩺 Diabetes Prediction System</div>', unsafe_allow_html=True)
-    st.markdown('<div class="subtitle">Aplikasi prediksi risiko diabetes berbasis Machine Learning</div>', unsafe_allow_html=True)
-
     st.markdown("""
-    <div class="card">
-        <h3>Selamat Datang 👋</h3>
+    <div class="hero">
+        <div class="badge">Machine Learning Web App</div>
+        <h1>DiaPredict AI 🩺</h1>
         <p>
-        Website ini dibuat untuk membantu melakukan prediksi awal terhadap risiko diabetes 
-        berdasarkan beberapa indikator kesehatan seperti kadar glukosa, tekanan darah, BMI, insulin, umur, 
-        dan riwayat diabetes keluarga.
-        </p>
-        <p>
-        Sistem ini menggunakan model <b>Support Vector Machine (SVM)</b> yang telah dilatih menggunakan 
-        dataset diabetes. Hasil prediksi yang diberikan berupa kategori apakah seseorang berisiko diabetes 
-        atau tidak berisiko diabetes.
+        Sistem prediksi risiko diabetes berbasis Support Vector Machine.
+        Website ini dibuat untuk membantu pengguna memahami potensi risiko diabetes
+        berdasarkan indikator kesehatan.
         </p>
     </div>
     """, unsafe_allow_html=True)
 
-    col1, col2, col3 = st.columns(3)
+    c1, c2, c3 = st.columns(3)
+    with c1:
+        st.markdown(f'<div class="small-card"><div class="num">{AKURASI}%</div><div class="label">Akurasi Model</div></div>', unsafe_allow_html=True)
+    with c2:
+        st.markdown('<div class="small-card"><div class="num">8</div><div class="label">Variabel Input</div></div>', unsafe_allow_html=True)
+    with c3:
+        st.markdown('<div class="small-card"><div class="num">SVM</div><div class="label">Algoritma Utama</div></div>', unsafe_allow_html=True)
 
-    with col1:
-        st.markdown(f"""
-        <div class="metric-card">
-            <div class="metric-number">{akurasi_model}%</div>
-            <div class="metric-label">Akurasi Model</div>
-        </div>
-        """, unsafe_allow_html=True)
+    st.markdown("""
+    <div class="card">
+        <h3>✨ Tentang Aplikasi</h3>
+        <p>
+        Aplikasi ini menggunakan data diabetes dengan beberapa variabel kesehatan seperti
+        jumlah kehamilan, glukosa, tekanan darah, insulin, BMI, riwayat diabetes keluarga,
+        dan umur. Data tersebut diproses menggunakan model Machine Learning untuk menghasilkan
+        prediksi awal berupa <b>berisiko diabetes</b> atau <b>tidak berisiko diabetes</b>.
+        </p>
+        <p>
+        Website ini cocok digunakan sebagai demo proyek Machine Learning karena sudah memiliki
+        input interaktif, model prediksi, tampilan hasil, dan informasi performa model.
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
 
-    with col2:
-        st.markdown("""
-        <div class="metric-card">
-            <div class="metric-number">8</div>
-            <div class="metric-label">Variabel Input</div>
-        </div>
-        """, unsafe_allow_html=True)
-
-    with col3:
-        st.markdown("""
-        <div class="metric-card">
-            <div class="metric-number">SVM</div>
-            <div class="metric-label">Metode Machine Learning</div>
-        </div>
-        """, unsafe_allow_html=True)
-
-# ================= PREDICTION =================
 elif menu == "🩺 Prediction":
-    st.markdown('<div class="title">Diabetes Risk Prediction</div>', unsafe_allow_html=True)
-    st.markdown('<div class="subtitle">Masukkan data pasien pada form berikut</div>', unsafe_allow_html=True)
+    st.markdown("""
+    <div class="hero">
+        <h1>Prediksi Risiko Diabetes</h1>
+        <p>Masukkan data kesehatan pasien, lalu klik tombol prediksi untuk melihat hasil klasifikasi.</p>
+    </div>
+    """, unsafe_allow_html=True)
 
-    col1, col2 = st.columns([1.2, 1])
+    col1, col2 = st.columns([1.1, 1])
 
     with col1:
         st.markdown('<div class="card">', unsafe_allow_html=True)
-        st.subheader("Input Data Pasien")
+        st.subheader("📋 Input Data Pasien")
 
         pregnancies = st.number_input("Jumlah Kehamilan", min_value=0, max_value=20, value=1)
-        glucose = st.number_input("Glucose", min_value=0, max_value=300, value=120)
-        blood_pressure = st.number_input("Blood Pressure", min_value=0, max_value=200, value=70)
-        skin_thickness = st.number_input("Skin Thickness", min_value=0, max_value=100, value=20)
+        glucose = st.number_input("Glucose / Kadar Glukosa", min_value=0, max_value=300, value=120)
+        blood_pressure = st.number_input("Blood Pressure / Tekanan Darah", min_value=0, max_value=200, value=70)
+        skin_thickness = st.number_input("Skin Thickness / Ketebalan Kulit", min_value=0, max_value=100, value=20)
         insulin = st.number_input("Insulin", min_value=0, max_value=900, value=80)
         bmi = st.number_input("BMI", min_value=0.0, max_value=70.0, value=25.0)
         pedigree = st.number_input("Diabetes Pedigree Function", min_value=0.0, max_value=3.0, value=0.5)
-        age = st.number_input("Age", min_value=1, max_value=120, value=25)
+        age = st.number_input("Age / Umur", min_value=1, max_value=120, value=25)
 
-        tombol = st.button("🔍 Predict Diabetes Risk")
+        tombol = st.button("🔍 Prediksi Sekarang")
         st.markdown('</div>', unsafe_allow_html=True)
 
     with col2:
         st.markdown('<div class="card">', unsafe_allow_html=True)
-        st.subheader("Prediction Result")
+        st.subheader("🧾 Hasil Prediksi")
 
         if tombol:
             data_baru = np.array([[pregnancies, glucose, blood_pressure, skin_thickness,
@@ -189,55 +212,94 @@ elif menu == "🩺 Prediction":
             hasil = model.predict(data_scaled)[0]
 
             if hasil == 1:
-                st.markdown('<div class="result-positive">Berisiko Diabetes</div>', unsafe_allow_html=True)
+                st.markdown('<div class="result-bad">⚠️ Berisiko Diabetes</div>', unsafe_allow_html=True)
                 st.write("""
-                Berdasarkan data yang dimasukkan, sistem memprediksi bahwa pasien memiliki indikasi 
-                risiko diabetes. Hasil ini bukan diagnosis medis, tetapi dapat digunakan sebagai 
-                gambaran awal untuk meningkatkan kewaspadaan.
+                Berdasarkan data yang dimasukkan, model memprediksi bahwa pasien memiliki indikasi
+                risiko diabetes. Hasil ini dapat menjadi peringatan awal agar pengguna lebih memperhatikan
+                pola hidup, asupan gula, berat badan, dan melakukan pemeriksaan medis lebih lanjut.
                 """)
+                st.progress(0.74)
+                st.markdown('<div class="warning-badge">Saran: lakukan konsultasi medis</div>', unsafe_allow_html=True)
             else:
-                st.markdown('<div class="result-negative">Tidak Berisiko Diabetes</div>', unsafe_allow_html=True)
+                st.markdown('<div class="result-good">✅ Tidak Berisiko Diabetes</div>', unsafe_allow_html=True)
                 st.write("""
-                Berdasarkan data yang dimasukkan, sistem memprediksi bahwa pasien tidak menunjukkan 
-                indikasi risiko diabetes berdasarkan pola data yang telah dipelajari model.
+                Berdasarkan data yang dimasukkan, model memprediksi bahwa pasien tidak menunjukkan
+                indikasi risiko diabetes berdasarkan pola data yang dipelajari. Meskipun begitu,
+                menjaga pola makan, aktivitas fisik, dan pemeriksaan kesehatan rutin tetap penting.
                 """)
+                st.progress(0.74)
+                st.markdown('<div class="badge">Saran: tetap jaga pola hidup sehat</div>', unsafe_allow_html=True)
 
-            st.info("Catatan: Hasil prediksi ini hanya bersifat edukatif dan bukan pengganti diagnosis dokter.")
+            st.info("Catatan: Hasil prediksi ini hanya untuk tujuan edukasi dan bukan pengganti diagnosis dokter.")
         else:
-            st.write("Silakan isi data pasien terlebih dahulu, lalu klik tombol prediksi.")
+            st.write("Belum ada hasil prediksi. Isi data pasien terlebih dahulu, lalu klik tombol prediksi.")
+            st.image("https://cdn-icons-png.flaticon.com/512/2966/2966486.png", width=180)
 
         st.markdown('</div>', unsafe_allow_html=True)
 
-# ================= ABOUT MODEL =================
 elif menu == "📊 About Model":
-    st.markdown('<div class="title">About Dataset & Model</div>', unsafe_allow_html=True)
-    st.markdown('<div class="subtitle">Informasi data dan metode yang digunakan</div>', unsafe_allow_html=True)
+    st.markdown("""
+    <div class="hero">
+        <h1>About Dataset & Model</h1>
+        <p>Informasi mengenai data, metode, dan performa model yang digunakan.</p>
+    </div>
+    """, unsafe_allow_html=True)
 
     st.markdown(f"""
     <div class="card">
-        <h3>Dataset</h3>
+        <h3>📌 Dataset</h3>
         <p>
-        Dataset yang digunakan adalah dataset diabetes yang berisi beberapa indikator kesehatan pasien.
-        Variabel input terdiri dari Pregnancies, Glucose, Blood Pressure, Skin Thickness, Insulin, BMI,
-        Diabetes Pedigree Function, dan Age.
+        Dataset yang digunakan adalah dataset diabetes yang berisi indikator kesehatan pasien.
+        Variabel input terdiri dari Pregnancies, Glucose, Blood Pressure, Skin Thickness,
+        Insulin, BMI, Diabetes Pedigree Function, dan Age.
         </p>
 
-        <h3>Metode</h3>
+        <h3>🤖 Metode</h3>
         <p>
-        Model yang digunakan adalah <b>Support Vector Machine (SVM)</b>. Metode ini digunakan untuk 
-        melakukan klasifikasi apakah pasien termasuk dalam kategori berisiko diabetes atau tidak.
+        Algoritma yang digunakan adalah <b>Support Vector Machine (SVM)</b>.
+        Model ini bekerja dengan mencari batas pemisah terbaik antara kelas pasien
+        yang berisiko diabetes dan tidak berisiko diabetes.
         </p>
 
-        <h3>Akurasi Model</h3>
+        <h3>📈 Performa Model</h3>
         <p>
-        Berdasarkan hasil pengujian pada data testing, model memperoleh akurasi sebesar 
-        <b>{akurasi_model}%</b>.
+        Berdasarkan pengujian pada data testing, model memperoleh akurasi sebesar
+        <b>{AKURASI}%</b>. Nilai ini menunjukkan bahwa model mampu mengklasifikasikan
+        sebagian besar data uji dengan cukup baik.
         </p>
 
-        <h3>Tujuan Aplikasi</h3>
+        <h3>🎯 Tujuan</h3>
         <p>
-        Aplikasi ini dibuat sebagai sistem prediksi berbasis web yang dapat digunakan untuk menampilkan
-        hasil klasifikasi secara interaktif dan mudah dipahami oleh pengguna.
+        Tujuan aplikasi ini adalah menampilkan hasil prediksi diabetes dalam bentuk
+        website interaktif yang mudah digunakan dan mudah dipahami oleh pengguna.
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
+
+elif menu == "📘 Guide":
+    st.markdown("""
+    <div class="hero">
+        <h1>Panduan Penggunaan</h1>
+        <p>Ikuti langkah berikut untuk menggunakan aplikasi prediksi diabetes.</p>
+    </div>
+    """, unsafe_allow_html=True)
+
+    st.markdown("""
+    <div class="card">
+        <h3>🧭 Cara Menggunakan Aplikasi</h3>
+        <ol>
+            <li>Buka menu <b>Prediction</b>.</li>
+            <li>Masukkan nilai pada setiap variabel kesehatan pasien.</li>
+            <li>Klik tombol <b>Prediksi Sekarang</b>.</li>
+            <li>Hasil prediksi akan muncul di sebelah kanan.</li>
+            <li>Baca interpretasi hasil dan catatan yang diberikan.</li>
+        </ol>
+
+        <h3>⚠️ Catatan Penting</h3>
+        <p>
+        Aplikasi ini tidak digunakan untuk menggantikan diagnosis dokter.
+        Hasil prediksi hanya bersifat edukatif dan sebagai contoh penerapan
+        Machine Learning dalam bidang kesehatan.
         </p>
     </div>
     """, unsafe_allow_html=True)
