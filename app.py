@@ -132,16 +132,16 @@ div.stButton > button:hover {
 """, unsafe_allow_html=True)
 
     # Jika tombol diklik, tampilkan card About Us di halaman utama
-    if about_us:
-        st.markdown("""
-        <div class="hero" style="text-align:center;">
+if about_us:
+    st.markdown("""
+    <div class="hero" style="text-align:center;">
             <h1>👩‍💻 About Us</h1>
             <p>Tim pengembang aplikasi Letsgo Check Diabetes.</p>
-        </div>
-        """, unsafe_allow_html=True)
+     </div>
+     """, unsafe_allow_html=True)
             
-        st.markdown("""
-        <div class="card">
+    st.markdown("""
+    <div class="card">
             <h3>💡 Tentang Proyek</h3>
             <p>
             <b>Letsgo Check Diabetes</b> merupakan website berbasis Machine Learning
@@ -175,8 +175,8 @@ div.stButton > button:hover {
             🚀 Dibangun menggunakan <b>Python</b>, <b>Streamlit</b>,
             <b>Scikit-Learn</b>, dan <b>Support Vector Machine (SVM)</b>.
             </p>
-        </div>
-        """, unsafe_allow_html=True)
+    </div>
+    """, unsafe_allow_html=True)
     
 
 with st.sidebar:
