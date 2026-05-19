@@ -204,7 +204,7 @@ if menu == "🏠 Home":
 
     c1, c2, c3 = st.columns(3)
     with c1:
-        st.markdown(f'<div class="small-card"><div class="num">{AKURASI:2.f}%</div><div class="label">Akurasi Model</div></div>', unsafe_allow_html=True)
+        st.markdown(f'<div class="small-card"><div class="num">{AKURASI:.2f}%</div><div class="label">Akurasi Model</div></div>', unsafe_allow_html=True)
     with c2:
         st.markdown('<div class="small-card"><div class="num">8</div><div class="label">Variabel Input</div></div>', unsafe_allow_html=True)
     with c3:
@@ -351,7 +351,7 @@ yang berisiko diabetes dan tidak berisiko diabetes.
     st.markdown("### 📈 Performa Model")
     st.markdown(f"""
 Berdasarkan pengujian pada data testing, model memperoleh akurasi sebesar
-**{AKURASI:2.f}%**.
+**{AKURASI:.2f}%**.
 
 Nilai ini menunjukkan bahwa model mampu mengklasifikasikan sebagian besar
 data uji dengan cukup baik.
