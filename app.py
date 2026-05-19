@@ -186,15 +186,15 @@ elif menu == "🩺 Prediction":
 
     with col1:
         st.markdown('<div class="card">', unsafe_allow_html=True)
-        st.subheader("📋 Input Data Pasien")
+        st.subheader("📋 Masukkan Data Pasien")
 
-        pregnancies = st.number_input("Jumlah Kehamilan", min_value=0, max_value=20, value=1)
-        glucose = st.number_input("Glucose / Kadar Glukosa", min_value=0, max_value=300, value=120)
-        blood_pressure = st.number_input("Blood Pressure / Tekanan Darah", min_value=0, max_value=200, value=70)
-        skin_thickness = st.number_input("Skin Thickness / Ketebalan Kulit", min_value=0, max_value=100, value=20)
-        insulin = st.number_input("Insulin", min_value=0, max_value=900, value=80)
-        bmi = st.number_input("BMI", min_value=0.0, max_value=70.0, value=25.0)
-        pedigree = st.number_input("Diabetes Pedigree Function", min_value=0.0, max_value=3.0, value=0.5)
+        pregnancies = st.number_input("Jumlah Kehamilan", min_value=0, max_value=20, value=None, placeholder="Masukkan Jumlah Kehamilan")
+        glucose = st.number_input("Glucose / Kadar Glukosa", min_value=0, max_value=300, value=None, placeholder="Masukkan Kadar Glukosa")
+        blood_pressure = st.number_input("Blood Pressure / Tekanan Darah", min_value=0, max_value=200, value=None, placeholder="Masukkan Tekanan Darah")
+        skin_thickness = st.number_input("Skin Thickness / Ketebalan Kulit", min_value=0, max_value=100, value=None, placeholder="Masukkan Ketebalan Kulit")
+        insulin = st.number_input("Insulin", min_value=0, max_value=900, value=None, placeholder="Masukkan Kadar Insulin")
+        bmi = st.number_input("BMI", min_value=0.0, max_value=70.0, value=None,placeholder="Masukkan nilai BMI")
+        pedigree = st.number_input("Diabetes Pedigree Function", min_value=0.0, max_value=3.0, value=None, placeholder="Masukkan Nilai Pedigree")
         age = st.number_input("Age / Umur", min_value=1, max_value=120, value=25)
 
         tombol = st.button("🔍 Prediksi Sekarang")
@@ -205,29 +205,53 @@ elif menu == "🩺 Prediction":
         st.subheader("🧾 Hasil Prediksi")
 
         if tombol:
+            if None in [
+                pregnancies, glucose, blood_pressure, skin_thickness,
+                insulin, bmi, pedigree, age
+            ]:
+                st.warning("⚠️ Mohon isi seluruh data pasien terlebih dahulu.")
+            else:
+            # Susun data input
             data_baru = np.array([[pregnancies, glucose, blood_pressure, skin_thickness,
                                    insulin, bmi, pedigree, age]])
 
             data_scaled = scaler.transform(data_baru)
             hasil = model.predict(data_scaled)[0]
 
+            # Prediksi probabilitas (pastikan model dibuat dengan probability=True)
+            probabilitas = model.predict_proba(data_scaled)[0]
+            peluang_diabetes = probabilitas[1] * 100
+            peluang_tidak_diabetes = probabilitas[0] * 100
+            
             if hasil == 1:
                 st.markdown('<div class="result-bad">⚠️ Berisiko Diabetes</div>', unsafe_allow_html=True)
                 st.write("""
                 Berdasarkan data yang dimasukkan, model memprediksi bahwa pasien memiliki indikasi
-                risiko diabetes. Hasil ini dapat menjadi peringatan awal agar pengguna lebih memperhatikan
-                pola hidup, asupan gula, berat badan, dan melakukan pemeriksaan medis lebih lanjut.
+                risiko diabetes. Hasil ini dapat menjadi peringatan awal untuk pengguna agar pengguna lebih memperhatikan
+                pola hidup dengan menjaga pola makan, rutin berolahraga, dan berkonsultasi dengan tenaga medis untuk pemeriksaan lebih lanjut.
                 """)
-                st.progress(0.74)
+                # Tampilkan probabilitas
+                st.markdown("### 📊 Probabilitas Prediksi")
+                st.write(f"**Peluang Berisiko Diabetes:** {peluang_diabetes:.2f}%")
+                st.write(f"**Peluang Tidak Berisiko Diabetes:** {peluang_tidak_diabetes:.2f}%")
+
+                # Progress bar berdasarkan peluang diabetes
+                st.progress(min(max(peluang_diabetes / 100, 0), 1))
                 st.markdown('<div class="warning-badge">Saran: lakukan konsultasi medis</div>', unsafe_allow_html=True)
             else:
                 st.markdown('<div class="result-good">✅ Tidak Berisiko Diabetes</div>', unsafe_allow_html=True)
                 st.write("""
                 Berdasarkan data yang dimasukkan, model memprediksi bahwa pasien tidak menunjukkan
-                indikasi risiko diabetes berdasarkan pola data yang dipelajari. Meskipun begitu,
-                menjaga pola makan, aktivitas fisik, dan pemeriksaan kesehatan rutin tetap penting.
+                indikasi risiko diabetes berdasarkan pola data yang dipelajari. Meskipun begitu, tetap disarankan untuk
+                menjaga pola hidup sehat dengan makan yang bergizi, melakukan aktivitas fisik yang bermanfaat,
+                dan melakukan pemeriksaan kesehatan secara berkala.
                 """)
-                st.progress(0.74)
+                 # Tampilkan probabilitas
+                st.markdown("### 📊 Probabilitas Prediksi")
+                st.write(f"**Peluang Tidak Berisiko Diabetes:** {peluang_tidak_diabetes:.2f}%")
+
+                # Progress bar berdasarkan peluang diabetes
+                st.progress(min(max(peluang_diabetes / 100, 0), 1))
                 st.markdown('<div class="badge">Saran: tetap jaga pola hidup sehat</div>', unsafe_allow_html=True)
 
             st.info("Catatan: Hasil prediksi ini hanya untuk tujuan edukasi dan bukan pengganti diagnosis dokter.")
