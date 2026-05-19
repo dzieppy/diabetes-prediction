@@ -131,11 +131,6 @@ div.stButton > button:hover {
 </style>
 """, unsafe_allow_html=True)
 
-st.markdown("<br>", unsafe_allow_html=True)
-    
-    # Tombol About Us di sidebar
-    about_us = st.button("👥 About Us", use_container_width=True)
-    
     # Jika tombol diklik, tampilkan card About Us di halaman utama
     if about_us:
         st.markdown("""
@@ -241,6 +236,10 @@ with st.sidebar:
             "🩺 Prediction"
         ]
     )
+    st.markdown("<br>", unsafe_allow_html=True)
+    # Tombol About Us di sidebar
+    about_us = st.button("👥 About Us", use_container_width=True)
+    
 if menu == "🏠 Home":
     st.markdown("""
     <div class="hero">
