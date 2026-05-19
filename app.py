@@ -400,8 +400,7 @@ elif menu == "🧮 BMI Calculator":
     <div class="custom-card">
         <h1>🧮 BMI Calculator</h1>
         <p class="center-text">
-        Hitung BMI (Body Mass Index) Anda
-        </p>
+        <p> Hitung BMI (Body Mass Index) dan ketahui kategori berat badan Anda.</p>
     </div>
     """, unsafe_allow_html=True)
 
