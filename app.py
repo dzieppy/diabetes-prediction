@@ -131,10 +131,63 @@ div.stButton > button:hover {
 </style>
 """, unsafe_allow_html=True)
 
-menu = st.sidebar.radio(
-    "🌐 Menu Navigasi",
-    ["🏠 Home", "🩺 Prediction", "📊 About Model", "📘 Guide"]
-)
+with st.sidebar:
+    st.markdown("""
+    <div style="text-align:center; padding: 10px 0 25px 0;">
+        <h1 style="font-size:48px; margin-bottom:0;">🩺</h1>
+        <h1 style="font-size:36px; font-weight:800; color:#1e293b; margin-top:0;">
+            Let's go Check<br>Diabetes
+        </h1>
+    </div>
+    """, unsafe_allow_html=True)
+
+    # Card informasi model
+    st.markdown("""
+    <div style="
+        background: rgba(255,255,255,0.65);
+        padding: 20px;
+        border-radius: 20px;
+        margin-bottom: 18px;
+        border: 1px solid rgba(255,255,255,0.5);
+    ">
+        <h4 style="margin-top:0;">🤖 Model Information</h4>
+        <p style="font-size:16px; margin-bottom:0;">
+            Model menggunakan <b>Support Vector Machine (SVM)</b>
+            untuk memprediksi risiko diabetes berdasarkan
+            indikator kesehatan pasien.
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
+
+    # Card penjelasan
+    st.markdown("""
+    <div style="
+        background: rgba(255,255,255,0.65);
+        padding: 20px;
+        border-radius: 20px;
+        margin-bottom: 25px;
+        border: 1px solid rgba(255,255,255,0.5);
+    ">
+        <h4 style="margin-top:0;">💡 About This App</h4>
+        <p style="font-size:16px; margin-bottom:0;">
+            Website ini membantu melakukan prediksi awal
+            risiko diabetes secara cepat, interaktif,
+            dan mudah dipahami.
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
+
+    st.markdown("### 📌 Menu")
+
+    menu = st.radio(
+         "🌐 Menu Navigasi",[
+            "🏠 Home",
+            "📘 Guide",
+            "📊 About Model",
+            "🧮 BMI Calculator",
+            "🩺 Prediction"
+        ]
+    )
 
 if menu == "🏠 Home":
     st.markdown("""
@@ -341,3 +394,65 @@ elif menu == "📘 Guide":
         </p>
     </div>
     """, unsafe_allow_html=True)
+
+elif menu == "🧮 BMI Calculator":
+    st.markdown("""
+    <div class="custom-card">
+
+    <h1>📏 BMI Calculator</h1>
+
+    <p class="center-text">
+    Hitung BMI (Body Mass Index) Anda
+    </p>
+
+    </div>
+    """, unsafe_allow_html=True)
+
+    col1, col2 = st.columns(2)
+
+    with col1:
+
+        tinggi = st.number_input(
+            "Tinggi Badan (cm)",
+            min_value=1.0
+        )
+    with col2:
+
+        berat = st.number_input(
+            "Berat Badan (kg)",
+            min_value=1.0
+        )
+    bmi_result = berat / ((tinggi / 100) ** 2)
+
+    st.metric(
+        "Hasil BMI",
+        f"{bmi_result:.2f}"
+    )
+
+    if bmi_result < 18.5:
+
+        st.warning("Kategori: Berat badan kurang")
+
+    elif bmi_result < 25:
+
+        st.success("Kategori: Berat badan normal")
+
+    elif bmi_result < 30:
+
+        st.warning("Kategori: Kelebihan berat badan")
+    else:
+        st.error("Kategori: Obesitas")
+
+    st.markdown("""
+    <div class="custom-card">
+
+    <h3>📋 Interpretasi BMI</h3>
+    <ul>
+    <li><b>< 18.5</b> : Berat badan kurang</li>
+    <li><b>18.5 - 24.9</b> : Berat badan normal</li>
+    <li><b>25 - 29.9</b> : Kelebihan berat badan</li>
+    <li><b>>= 30</b> : Obesitas</li>
+    </ul>
+    </div>
+    """, unsafe_allow_html=True)
+
