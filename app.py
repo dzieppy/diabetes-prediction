@@ -131,6 +131,59 @@ div.stButton > button:hover {
 </style>
 """, unsafe_allow_html=True)
 
+st.markdown("<br>", unsafe_allow_html=True)
+    
+    # Tombol About Us di sidebar
+    about_us = st.button("👥 About Us", use_container_width=True)
+    
+    # Jika tombol diklik, tampilkan card About Us di halaman utama
+    if about_us:
+        st.markdown("""
+        <div class="hero" style="text-align:center;">
+            <h1>👩‍💻 About Us</h1>
+            <p>Tim pengembang aplikasi Letsgo Check Diabetes.</p>
+        </div>
+        """, unsafe_allow_html=True)
+            
+        st.markdown("""
+        <div class="card">
+            <h3>💡 Tentang Proyek</h3>
+            <p>
+            <b>Letsgo Check Diabetes</b> merupakan website berbasis Machine Learning
+            yang dikembangkan sebagai tugas proyek Praktisi Mengajar bersama Pak Sopian.
+            Website ini digunakan untuk memprediksi risiko diabetes secara interaktif.
+            </p>
+    
+            <h3>👥 Tim Pengembang</h3>
+            <p>
+            - Diva Rizkiya Annisa<br>
+            - Dimas Agatra<br>
+            - Salsabila<br>
+            - Hezron Tangdigau<br>
+            - M. Asrin<br>
+            - M. Satria<br>
+            - Yusihani Widasari<br>
+            - Yulikarniwati Lase<br>
+            - Yumna Zhafirah<br>
+            - Zahwa Putri Dio
+            </p>
+    
+            <p>
+            📊 Mahasiswa Statistika FMIPA Universitas Mulawarman
+            </p>
+    
+            <p>
+            💻 Developer &amp; UI Designer
+            </p>
+    
+            <p style="margin-bottom:0;">
+            🚀 Dibangun menggunakan <b>Python</b>, <b>Streamlit</b>,
+            <b>Scikit-Learn</b>, dan <b>Support Vector Machine (SVM)</b>.
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
+    
+
 with st.sidebar:
     st.markdown("""
     <div style="text-align:center; padding: 10px 0 25px 0;">
@@ -188,58 +241,6 @@ with st.sidebar:
             "🩺 Prediction"
         ]
     )
-    st.markdown("<br>", unsafe_allow_html=True)
-    
-    # Tombol About Us di sidebar
-    about_us = st.button("👥 About Us", use_container_width=True)
-    
-    # Jika tombol diklik, tampilkan card About Us di halaman utama
-    if about_us:
-        st.markdown("""
-        <div class="hero" style="text-align:center;">
-            <h1>👩‍💻 About Us</h1>
-            <p>Tim pengembang aplikasi Letsgo Check Diabetes.</p>
-        </div>
-        """, unsafe_allow_html=True)
-            
-        st.markdown("""
-        <div class="card">
-            <h3>💡 Tentang Proyek</h3>
-            <p>
-            <b>Letsgo Check Diabetes</b> merupakan website berbasis Machine Learning
-            yang dikembangkan sebagai tugas proyek Praktisi Mengajar bersama Pak Sopian.
-            Website ini digunakan untuk memprediksi risiko diabetes secara interaktif.
-            </p>
-    
-            <h3>👥 Tim Pengembang</h3>
-            <p>
-            - Diva Rizkiya Annisa<br>
-            - Dimas Agatra<br>
-            - Salsabila<br>
-            - Hezron Tangdigau<br>
-            - M. Asrin<br>
-            - M. Satria<br>
-            - Yusihani Widasari<br>
-            - Yulikarniwati Lase<br>
-            - Yumna Zhafirah<br>
-            - Zahwa Putri Dio
-            </p>
-    
-            <p>
-            📊 Mahasiswa Statistika FMIPA Universitas Mulawarman
-            </p>
-    
-            <p>
-            💻 Developer &amp; UI Designer
-            </p>
-    
-            <p style="margin-bottom:0;">
-            🚀 Dibangun menggunakan <b>Python</b>, <b>Streamlit</b>,
-            <b>Scikit-Learn</b>, dan <b>Support Vector Machine (SVM)</b>.
-            </p>
-        </div>
-        """, unsafe_allow_html=True)
-    
 if menu == "🏠 Home":
     st.markdown("""
     <div class="hero">
