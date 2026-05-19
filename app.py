@@ -386,7 +386,7 @@ elif menu == "📘 Guide":
             <li>Baca interpretasi hasil dan catatan yang diberikan.</li>
             <li>Untuk memeriksa nilai BMI, Buka Menu BMI.</li>
         </ol>
-        """)
+    """)
         st.markdown("### ⚠️ Catatan Penting")
         st.markdown("""
                 Aplikasi ini tidak digunakan untuk menggantikan diagnosis dokter.
