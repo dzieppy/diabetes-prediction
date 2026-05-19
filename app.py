@@ -293,7 +293,20 @@ elif menu == "🩺 Prediction":
                 # Tampilkan probabilitas
                 st.markdown("### 📊 Probabilitas Prediksi")
                 st.write(f"**Peluang Berisiko Diabetes:** {peluang_diabetes:.2f}%")
-                st.write(f"**Peluang Tidak Berisiko Diabetes:** {peluang_tidak_diabetes:.2f}%")
+
+                st.markdown(
+                    f"""
+                    <div style="
+                        display: flex; justify-content: space-between;
+                        align-items: center; margin-bottom: 6px;
+                        font-weight: 600;
+                        color: #1e3a8a;
+                    ">
+                        <span>📈 Peluang Berisiko Diabetes</span>
+                        <span>{peluang_diabetes:.2f}%</span>
+                    </div>
+                    """,unsafe_allow_html=True
+                 )        
 
                 # Progress bar berdasarkan peluang diabetes
                 st.progress(min(max(peluang_diabetes / 100, 0), 1))
