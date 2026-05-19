@@ -211,16 +211,16 @@ elif menu == "🩺 Prediction":
             ]:
                 st.warning("⚠️ Mohon isi seluruh data pasien terlebih dahulu.")
             else:
-            data_baru = np.array([[pregnancies, glucose, blood_pressure, skin_thickness,
-                                   insulin, bmi, pedigree, age]])
-
-            data_scaled = scaler.transform(data_baru)
-            hasil = model.predict(data_scaled)[0]
-
-            probabilitas = model.predict_proba(data_scaled)[0]
-            peluang_diabetes = probabilitas[1] * 100
-            peluang_tidak_diabetes = probabilitas[0] * 100
-            
+                data_baru = np.array([[pregnancies, glucose, blood_pressure, skin_thickness,
+                                       insulin, bmi, pedigree, age]])
+    
+                data_scaled = scaler.transform(data_baru)
+                hasil = model.predict(data_scaled)[0]
+    
+                probabilitas = model.predict_proba(data_scaled)[0]
+                peluang_diabetes = probabilitas[1] * 100
+                peluang_tidak_diabetes = probabilitas[0] * 100
+                
             if hasil == 1:
                 st.markdown('<div class="result-bad">⚠️ Berisiko Diabetes</div>', unsafe_allow_html=True)
                 st.write("""
