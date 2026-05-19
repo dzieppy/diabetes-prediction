@@ -442,7 +442,7 @@ elif menu == "🧮 BMI Calculator":
     st.markdown("""
     <div class="custom-card">
 
-    <h3>📋 Interpretasi BMI</h3>
+    <h3> Interpretasi BMI</h3>
     <ul>
     <li><b>< 18.5</b> : Berat badan kurang</li>
     <li><b>18.5 - 24.9</b> : Berat badan normal</li>
